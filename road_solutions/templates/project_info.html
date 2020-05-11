@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	{% load static %}
+    <meta charset="UTF-8">
+    <title>О проекте</title>
+	<link rel="shortcut icon" href='{% static "logo.png" %}' type="image/x-icon">
+    <link rel="stylesheet" href='{% static "project_info_css.css" %}' type="text/css">
+	
+</head>
+<body>	
+		<div class="info"> 
+			<div class="text" id="main"><strong>Дорожные решения</strong> - система, созданный для автоматизации и ускорения взаимодействия граждан с органами регуляции дорожного движения по проблемам состояния дорожного полотна и инфратруктуры.<br/><strong>Наша цель</strong> - улучшение качества дорог в РФ и увеличение скорости реакции гос. органов на проблемные места.<br/><strong>Наша команда</strong></div>
+			<div class="team"><div class="teammate_img1"><img src='{% static "egor_pic.jpg" %}' id="egor"><div class="text" id='Egoriy'>Егор</div></div>
+			<div class="teammate_img2"><img src='{% static "nick_pic.png" %}' id="nick"><div class="text" id='Nickolay'>Николай</div></div></div>
+			<div class='text' id='contacts'>Контакты<br/>тел. +79059673811<br/>email: DTP.Analisys@yandex.ru<br/>Петерс Егор Александрович</div>
+		</div>
+		<!--Ниже ничего не добавлять!! Иначе не будет корректно заезжать-->
+		<div id="menu_bar">
+			<div id="triangle-topleft"></div>
+			<div id="rectangle"></div>
+			<div id="title">Дорожные<br/> решения</div>
+		<div id="vertical_menu_components">м<br/>е<br/>н<br/>ю</div>
+			<div id="menu">
+				<div class="menu_components"><form action="/.">
+				<button type="submit" class="m_button">Главная</button>
+				</form></div>
+				<div class="menu_components"><form action='/map'>
+				<button type="submit" class="m_button" id="map_b">Карта</button>
+				</form></div>
+				<div class="menu_components"><form action="/feedback">
+				<button type="submit" class="m_button">Подать жалобу</button>
+				</form></div>
+				<div class="menu_components"><form action='/open-data'>
+				<button type="submit" class="m_button">Открытые данные</button>
+				</form></div>
+			</div>
+		</div>
+</body>
+</html>

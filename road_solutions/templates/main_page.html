@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	{% load static %}
+    <meta charset="UTF-8">
+    <title>Дорожные решения</title>
+	<link rel="shortcut icon" href='{% static "logo.png" %}' type="image/x-icon">
+    <link rel="stylesheet" href='{% static "web_site_design.css" %}' type="text/css">
+	
+</head>
+<body>
+	<div id="triangle-topleft"></div>
+	<div id="rectangle"></div>
+    <div id="title">Дорожные<br/> решения</div>
+    <div id="menu">
+        <div class="menu_components" font-family="Trebuchet MS" Sans-serif><form action='map/'>
+		<button type="submit" class="m_button" id="map_b">Карта</button>
+		</form></div>
+		<div class="menu_components"><form action="feedback/">
+		<button type="submit" class="m_button">Подать жалобу</button>
+		</form></div>
+        	<div class="menu_components"><form action='open-data/'>
+		<button type="submit" class="m_button">Открытые данные</button>
+		</form></div>
+        	<div class="menu_components"><form action='about/'>
+		<button type="submit" class="m_button">О проекте</button>
+		</form></div>
+    </div>
+    <div class="description">
+        <div class="text"> <strong>Дорожные решения</strong> - инновационный проект, генерирующий рекомендации по улучшению безопасности дорожной ситуации и прогнозирующий будущее количество ДТП на основе алгоритмов анализа данных по ДТП и жалоб граждан.</div>
+		<img src='{% static "laptop.png" %}' id='lapt'>
+	</div>
+</body>
+</html>

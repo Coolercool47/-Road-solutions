@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	{% load static %}
+    <meta charset="UTF-8">
+    <title>Открытые данные</title>
+	<link rel="shortcut icon" href='{% static "logo.png" %}' type="image/x-icon">
+    <link rel="stylesheet" href='{% static "open_data_css.css" %}' type="text/css">
+	
+</head>
+<body>	
+		<div><img src='{% static "road.png" %}' id="bg_img"></div>
+			
+			<div class="data_menu_block_2017">
+			<form action="https://yadi.sk/d/N37R9J-1DK0iOg">
+			<button type="submit" class="csv_download_button">.csv</button>
+			</form>
+			<form action="https://yadi.sk/d/c6b8VYjYKzCsvQ">
+			<button type="submit" class="xlsx_download_button">.xlsx</button>
+			</form>
+			<div class="dl1">Данные о ДТП за 2017 год по г. Кемерово скачать:</div>
+			</div>
+			
+			<div class="data_menu_block_2018">
+			<form action="https://yadi.sk/d/Vfy9KKHbPrFQfw">
+			<button type="submit" class="csv_download_button">.csv</button>
+			</form>
+			<form action="https://yadi.sk/i/YaHdtSKJZR_Iug">
+			<button type="submit" class="xlsx_download_button">.xlsx</button>
+			</form>
+			<div class="dl2">Данные о ДТП за 2018 год по г. Кемерово скачать:</div>
+			</div>
+			
+			<div class="data_menu_block_2019">
+			
+			<form action="https://yadi.sk/d/oj7Pu9ETteXfXA">
+			<button type="submit" class="csv_download_button">.csv</button>
+			</form>
+			<form action="https://yadi.sk/i/t3O2s1lih9lmZg">
+			<button type="submit" class="xlsx_download_button">.xlsx</button>
+			</form>
+			<div class="dl3">Данные о ДТП за 2019 год по г. Кемерово скачать:</div>
+			</div>
+			
+			<div class="data_menu_block_2020">
+			<form action="https://yadi.sk/d/9k6HOhE1bEUfPQ">
+			<button type="submit" class="csv_download_button">.csv</button>
+			</form>
+			<form action="https://yadi.sk/i/cPVn8ugtas4Jpw">
+			<button type="submit" class="xlsx_download_button">.xlsx</button>
+			</form>
+			<div class="dl4">Данные о ДТП за 2020 год по г. Кемерово скачать:</div>
+			</div>
+			
+		<div id="data_menu_title">Открытые данные</div>
+		<div id="menu_bar">
+			<div id="triangle-topleft"></div>
+			<div id="rectangle"></div>
+			<div id="menu_bar_title">Дорожные<br/> решения</div>
+			<div id="vertical_menu_component">м<br/>е<br/>н<br/>ю</div>
+			<div id="menu">
+				<div class="menu_components"><form action="/.">
+				<button type="submit" class="m_button">Главная</button>
+				</form></div>
+				<div class="menu_components"><form action="/map">
+				<button type="submit" class="m_button" id="map_b">Карта</button>
+				</form></div>
+				<div class="menu_components"><form action="/feedback">
+				<button type="submit" class="m_button">Подать жалобу</button>
+				</form></div>
+				<div class="menu_components"><form action="/about">
+				<button type="submit" class="m_button">О проекте</button>
+				</form></div>
+			</div>
+		</div>
+</body>
+</html>

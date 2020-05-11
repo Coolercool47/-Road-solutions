@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	{% load static %}
+    <meta charset="UTF-8">
+    <title>Выбор карты</title>
+	<link rel="shortcut icon" href='{% static "logo.png" %}' type="image/x-icon">
+    <link rel="stylesheet" href='{% static "map_choise_css.css" %}' type="text/css">
+	
+</head>
+<body>
+		<div class="form"></div>
+			<form action="map/" method="post" class="form2">
+				{% csrf_token %}
+				
+				<div class="title_form">Выбор годов для карты</div>
+				<div class="radio_choice1"><input type="checkbox" class="2017" name="checks" value="1"><span class="txt">2017 год</span></div>
+				<div class="radio_choice2"><input type="checkbox" class="2018" name="checks" value="2"><span class="txt">2018 год</span></div>
+				<div class="radio_choice3"><input type="checkbox" class="2019" name="checks" value="3"><span class="txt">2019 год</span></div>
+				<div class="radio_choice4"><input type="checkbox" class="2020" name="checks" value="4"><span class="txt">2020 год</span></div>
+				<input type="submit" class="send" value="Открыть">
+			</form>
+		<!--Ниже ничего не добавлять!! Иначе не будет корректно заезжать-->
+		<div id="menu_bar">
+			<div id="triangle-topleft"></div>
+			<div id="rectangle"></div>
+			<div id="title">Дорожные<br/> решения</div>
+		<div id="vertical_menu_components">м<br/>е<br/>н<br/>ю</div>
+			<div id="menu">
+				<div class="menu_components"><form action="/.">
+				<button type="submit" class="m_button">Главная</button>
+				</form></div>
+				<div class="menu_components"><form action='/feedback'>
+				<button type="submit" class="m_button" id="map_b">Подать жалобу</button>
+				</form></div>
+				<div class="menu_components"><form action='/open-data'>
+				<button type="submit" class="m_button">Открытые данные</button>
+				</form></div>
+				<div class="menu_components"><form action='/about'>
+				<button type="submit" class="m_button">О проекте</button>
+				</form></div>
+			</div>
+		</div>
+</body>
+</html>

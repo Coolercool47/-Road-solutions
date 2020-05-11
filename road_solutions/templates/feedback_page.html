@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	{% load static %}
+    <meta charset="UTF-8">
+    <title>Подача жалобы</title>
+	<link rel="shortcut icon" href='{% static "logo.png" %}' type="image/x-icon">
+    <link rel="stylesheet" href='{% static "feedback_page_css.css" %}' type="text/css">
+	
+</head>
+<body>	
+		<div id="rectangle2"></div>
+		<form action="send/" method="post">
+			{% csrf_token %}
+			<div class="title_form">Новая жалоба</div>
+			<input type="text" class="problem" placeholder="Название проблемы (не более 50 символов)" maxlength=50 name="problem">
+			<textarea class="problem_txt" placeholder="Описание проблемы (не более 1500 символов)" rows="4" cols="50" maxlength=1500 name="problem_description"></textarea>
+			<input type="text" class="place" placeholder="Улица (переулок), номер здания, строение (не более 50 символов)" maxlength=50 name="place">
+			<input type="submit" class="send" value="Отправить"></div>
+		</form>
+		<!--Ниже ничего не добавлять!! Иначе не будет корректно заезжать-->
+		<div id="menu_bar">
+			<div id="triangle-topleft"></div>
+			<div id="rectangle"></div>
+			<div id="title">Дорожные<br/> решения</div>
+		<div id="vertical_menu_components">м<br/>е<br/>н<br/>ю</div>
+			<div id="menu">
+				<div class="menu_components"><form action="/.">
+				<button type="submit" class="m_button">Главная</button>
+				</form></div>
+				<div class="menu_components" font-family="Trebuchet MS" Sans-serif><form action='/map'>
+				<button type="submit" class="m_button" id="map_b">Карта</button>
+				</form></div>
+				<div class="menu_components"><form action='/open-data'>
+				<button type="submit" class="m_button">Открытые данные</button>
+				</form></div>
+				<div class="menu_components"><form action='/about'>
+				<button type="submit" class="m_button">О проекте</button>
+				</form></div>
+			</div>
+		</div>
+</body>
+</html>

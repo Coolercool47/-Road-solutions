@@ -1,0 +1,208 @@
+body{
+    background-image: url(road2.jpg);
+	background-size: 100% 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+}
+
+html {
+	overflow:  hidden; 
+	}
+
+#triangle-topleft {
+	position: absolute;
+	left: 0px;
+	top: 160px;
+	width: 0;
+	height: 0;
+	border-top: 2000px solid #ffffff; 
+	border-right: 440px solid transparent;			
+}
+
+#rectangle {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 440px;
+	height: 160px;
+	background: #0b9cea;
+}
+
+#menu_bar{
+	font-family: "Trebuchet", sans-serif;
+    position: absolute; /* Абсолютное позиционирование */
+    top:0px; /* Положение от нижнего края */
+    left: -400px;
+    font-size: 30px;
+	color: #ffffff;
+    transition-duration: 0.7s;
+}
+
+#menu{
+	font-family: "Trebuchet", sans-serif;
+    position: absolute; /* Абсолютное позиционирование */
+    top: 200px; /* Положение от нижнего края */
+    left: 70px;
+    font-size: 30px;
+    color: #ffffff;
+    width: 350px;
+}
+
+#title{
+	font-family: "Trebuchet", sans-serif;
+    position: absolute; /* Абсолютное позиционирование */
+    top: 5px; /* Положение от нижнего края */
+    left: 75px; /* Положение от правого края */
+    font-size: 60px;
+    color: white;
+}
+
+#vertical_menu_components {
+	line-height: 30px;
+	text-align: left;
+	transition-duration: 0.7s;
+	position:absolute;
+	top: 10px;
+	left: 410px;
+	font-size: 30px;
+	color: #ffffff
+}
+
+.m_button {
+	left: 100px;
+	margin-bottom: 15px;
+	border: 4px solid #0b9cea;
+	border-radius: 30px;
+	font-size: 30px;
+	 -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	color: #22b1ff;
+	background-color: #ffffff;
+}
+
+.m_button:hover {
+	transform: scale(1.2);
+	background-color: #22b1ff;
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+	color: white;
+}
+
+#menu_bar:hover{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+#menu_bar:hover #vertical_menu_components {
+	opacity: 0;
+}
+
+.send {
+	position: absolute;
+	top: 50%;
+	left: 44%;
+	width: 12%;
+	border: 4px solid #0b9cea;
+	border-radius: 30px;
+	font-size: 30px;
+	 -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+	padding: 0.3% 1% 0.3% 1%;
+	color: #22b1ff;
+	background-color: #ffffff;
+}
+
+.title_form {
+	font-family: "Trebuchet", sans-serif;
+	color: #22b1ff;
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	top: 7.5%;
+	font-size: 48px;
+	
+}
+
+.send:hover {
+	transform: scale(1.2);
+	background-color: #22b1ff;
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+	color: white;
+}
+
+.radio_choice1 {
+	position: absolute;
+	left: 30%;
+	top: 17.5%;
+}
+
+.radio_choice2 {
+	position: absolute;
+	left: 30%;
+	top: 25%;
+}
+
+.radio_choice3 {
+	position: absolute;
+	left: 30%;
+	top: 32.5%;
+}
+
+.radio_choice4 {
+	position: absolute;
+	left: 30%;
+	top: 40%;
+}
+
+.txt {
+	font-family: "Trebuchet", sans-serif;
+	color: #22b1ff;
+	font-size: 40px;
+}
+
+.form {
+	position: absolute;
+	left: 25%;
+	top: 10px;
+	background-color: white;
+	width: 50%;
+	height: 70%;
+	border-radius: 30px;
+}
+
+
+@media (max-width: 1500px) and (min-width: 1201px) {
+	.send {
+		font-size: 30px;	
+	}
+}
+
+@media (max-width: 1200px) and (min-width: 900px) {
+	.send {
+		font-size: 20px;	
+	}
+	.title_form {
+		font-size: 40px;
+	}
+}
+
+@media (max-width: 899px) {
+	.send {
+		font-size: 10px;	
+	}
+	.title_form {
+		font-size: 20px;
+}

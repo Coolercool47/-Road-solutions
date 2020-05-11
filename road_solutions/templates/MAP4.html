@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<head>    
+    {% load static %}
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    <title>Карта конценраций</title>
+	<link rel="shortcut icon" href='{% static "logo.png" %}' type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.5.1/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.5.1/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://rawcdn.githack.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>
+    <style>html, body {width: 100%;height: 100.0%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0px;left:400px;}</style>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_c0655e08a3f44f4481a0ea097c6aed9a {
+                    position: relative;
+                    width: calc(100% - 400px);
+                    height: 100.0%;
+                    left: 400px;
+                    top: 0px;
+					margin: 0px;
+                }
+            </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+    <link rel="stylesheet" href='{% static "map_css.css" %}' type="text/css">
+</head>
+<body>    
+    
+            <div class="folium-map" id="map_c0655e08a3f44f4481a0ea097c6aed9a" ></div>
+            <div id="triangle-topleft"></div>
+            <div id="rectangle"></div>
+            <div id="rectangle1"></div>
+            <div id="title">Дорожные<br/> решения</div>
+            <div id="menu">
+                <div class="menu_components" font-family="Trebuchet MS" Sans-serif><form action='/.'>
+                <button type="submit" class="m_button">Главная</button>
+                </form></div>
+                <div class="menu_components"><form action="/feedback">
+                <button type="submit" class="m_button">Подать жалобу</button>
+                </form></div>
+                    <div class="menu_components"><form action='/open-data'>
+                <button type="submit" class="m_button">Открытые данные</button>
+                </form></div>
+                    <div class="menu_components"><form action='/about'>
+                <button type="submit" class="m_button">О проекте</button>
+                </form></div>
+            </div>
+        
+</body>
+<script>    
+    
+            var map_c0655e08a3f44f4481a0ea097c6aed9a = L.map(
+                "map_c0655e08a3f44f4481a0ea097c6aed9a",
+                {
+                    center: [55.3333, 86.0833],
+                    crs: L.CRS.EPSG3857,
+                    maxBounds: [[-90, -180], [90, 180]],
+                    zoom: 12,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_e181ad2578ae4ab4ba91cfc8dad668f9 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 11, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_c0655e08a3f44f4481a0ea097c6aed9a);
+        
+    
+            var marker_cluster_251b3a61b0e24818b61bfacb420b20fa = L.markerClusterGroup(
+                {}
+            );
+            map_c0655e08a3f44f4481a0ea097c6aed9a.addLayer(marker_cluster_251b3a61b0e24818b61bfacb420b20fa);
+        
+    
+            var marker_11d72d7ba623471fb886a3d65d19cc0a = L.marker(
+                [6.0, 8.0],
+                {}
+            ).addTo(marker_cluster_251b3a61b0e24818b61bfacb420b20fa);
+        
+    
+            var icon_3ef1729321a94e249b87bb3dc29ce74b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "pink", "prefix": "glyphicon"}
+            );
+            marker_11d72d7ba623471fb886a3d65d19cc0a.setIcon(icon_3ef1729321a94e249b87bb3dc29ce74b);
+        
+    
+            var marker_d2ce5a8091a34c6a835ab9fee620ea02 = L.marker(
+                [6.0, 8.0],
+                {}
+            ).addTo(marker_cluster_251b3a61b0e24818b61bfacb420b20fa);
+        
+    
+            var icon_da2c0a07b6b347aa9362848cdd0183ab = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "pink", "prefix": "glyphicon"}
+            );
+            marker_d2ce5a8091a34c6a835ab9fee620ea02.setIcon(icon_da2c0a07b6b347aa9362848cdd0183ab);
+        
+    
+            var marker_21e62388d7c34b3389f9d0c2cf53dc5b = L.marker(
+                [5.0, 8.0],
+                {}
+            ).addTo(marker_cluster_251b3a61b0e24818b61bfacb420b20fa);
+        
+    
+            var icon_f1676acb236840cea986cf811bc71061 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "pink", "prefix": "glyphicon"}
+            );
+            marker_21e62388d7c34b3389f9d0c2cf53dc5b.setIcon(icon_f1676acb236840cea986cf811bc71061);
+        
+    
+            var marker_647131b8d693447d9e715df21e411465 = L.marker(
+                [6.0, 8.0],
+                {}
+            ).addTo(marker_cluster_251b3a61b0e24818b61bfacb420b20fa);
+        
+    
+            var icon_3136b458da1c4c63b85eb4d027b700c7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "pink", "prefix": "glyphicon"}
+            );
+            marker_647131b8d693447d9e715df21e411465.setIcon(icon_3136b458da1c4c63b85eb4d027b700c7);
+        
+    
+            var marker_262869a9fa404f16a0b26caac5922a1e = L.marker(
+                [6.0, 8.0],
+                {}
+            ).addTo(marker_cluster_251b3a61b0e24818b61bfacb420b20fa);
+        
+    
+            var icon_26bda5e6a95a42279e9652ee3ee4a45e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "pink", "prefix": "glyphicon"}
+            );
+            marker_262869a9fa404f16a0b26caac5922a1e.setIcon(icon_26bda5e6a95a42279e9652ee3ee4a45e);
+        
+    
+            var marker_2c7b072833fc434a9208e647796c30d2 = L.marker(
+                [6.0, 8.0],
+                {}
+            ).addTo(marker_cluster_251b3a61b0e24818b61bfacb420b20fa);
+        
+    
+            var icon_5630f028a61744f7a6886d466c769a25 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "pink", "prefix": "glyphicon"}
+            );
+            marker_2c7b072833fc434a9208e647796c30d2.setIcon(icon_5630f028a61744f7a6886d466c769a25);
+        
+    
+            var marker_bf6d8b64b6f44e278a919a29fc3a0ed7 = L.marker(
+                [6.0, 8.0],
+                {}
+            ).addTo(marker_cluster_251b3a61b0e24818b61bfacb420b20fa);
+        
+    
+            var icon_b417e82aabdb4b44bac49a65a1ca2473 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "pink", "prefix": "glyphicon"}
+            );
+            marker_bf6d8b64b6f44e278a919a29fc3a0ed7.setIcon(icon_b417e82aabdb4b44bac49a65a1ca2473);
+        
+    
+            var marker_efbbf11d57a3406294a9b30f0370f540 = L.marker(
+                [6.0, 8.0],
+                {}
+            ).addTo(marker_cluster_251b3a61b0e24818b61bfacb420b20fa);
+        
+    
+            var icon_a72df0c5e011446ba610b2e12efbc089 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "pink", "prefix": "glyphicon"}
+            );
+            marker_efbbf11d57a3406294a9b30f0370f540.setIcon(icon_a72df0c5e011446ba610b2e12efbc089);
+        
+    
+            var marker_7be86b481f4e4d1e8895dc1adc45625c = L.marker(
+                [6.0, 8.0],
+                {}
+            ).addTo(marker_cluster_251b3a61b0e24818b61bfacb420b20fa);
+        
+    
+            var icon_6889e6676aed4a4cbfe729088ce51dfa = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "pink", "prefix": "glyphicon"}
+            );
+            marker_7be86b481f4e4d1e8895dc1adc45625c.setIcon(icon_6889e6676aed4a4cbfe729088ce51dfa);
+        
+    
+            var marker_cluster_5a55bf5cca6c444b8691379b4f11ec4e = L.markerClusterGroup(
+                {}
+            );
+            map_c0655e08a3f44f4481a0ea097c6aed9a.addLayer(marker_cluster_5a55bf5cca6c444b8691379b4f11ec4e);
+        
+    
+            var marker_cluster_5e2975d807e848aeb5cfa2182779ad2a = L.markerClusterGroup(
+                {}
+            );
+            map_c0655e08a3f44f4481a0ea097c6aed9a.addLayer(marker_cluster_5e2975d807e848aeb5cfa2182779ad2a);
+        
+    
+            var marker_cluster_6f6a97d4a4ea46b5bd1434e0e49a84f8 = L.markerClusterGroup(
+                {}
+            );
+            map_c0655e08a3f44f4481a0ea097c6aed9a.addLayer(marker_cluster_6f6a97d4a4ea46b5bd1434e0e49a84f8);
+        
+    
+            var marker_cluster_89c75c8e11b14653a123ee905ffcef1f = L.markerClusterGroup(
+                {}
+            );
+            map_c0655e08a3f44f4481a0ea097c6aed9a.addLayer(marker_cluster_89c75c8e11b14653a123ee905ffcef1f);
+        
+    
+            var marker_cluster_ee356e87e54d4fb0abb9da007f917d83 = L.markerClusterGroup(
+                {}
+            );
+            map_c0655e08a3f44f4481a0ea097c6aed9a.addLayer(marker_cluster_ee356e87e54d4fb0abb9da007f917d83);
+        
+    
+            var marker_e781029fe6414a9da71846ed22320a67 = L.marker(
+                [55.358187, 86.031349],
+                {}
+            ).addTo(marker_cluster_ee356e87e54d4fb0abb9da007f917d83);
+        
+    
+            var icon_763b1657b71d47ef9580a57768bd47c6 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_e781029fe6414a9da71846ed22320a67.setIcon(icon_763b1657b71d47ef9580a57768bd47c6);
+        
+    
+        var popup_734f9bc074e747d0a887de668036583d = L.popup({"maxWidth": "100%"});
+
+        
+            var html_663c8700f8a34e63970895d63fd19098 = $(`<div id="html_663c8700f8a34e63970895d63fd19098" style="width: 100.0%; height: 100.0%;">ДТП совершено 02.01.2020 в 12:40(день)<br/>Место: ул. Красноармейская/16А<br/>Наезд на пешехода<br/>пострадало 2 погибло 2 раненых нет<br/> Нарушения: Нарушение правил проезда пешеходного перехода Сопутствующие нарушения: Сопутствующие нарушения не выявлены</div>`)[0];
+            popup_734f9bc074e747d0a887de668036583d.setContent(html_663c8700f8a34e63970895d63fd19098);
+        
+
+        marker_e781029fe6414a9da71846ed22320a67.bindPopup(popup_734f9bc074e747d0a887de668036583d)
+        ;
+
+        
+    
+    
+            var marker_c0759084569c4b0b87443f7b602a78ca = L.marker(
+                [55.339503, 86.106844],
+                {}
+            ).addTo(marker_cluster_ee356e87e54d4fb0abb9da007f917d83);
+        
+    
+            var icon_f06c9cb4b80648efa3546c24279e5f27 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_c0759084569c4b0b87443f7b602a78ca.setIcon(icon_f06c9cb4b80648efa3546c24279e5f27);
+        
+    
+        var popup_cfe549f8242d4655ac1f025374c32e76 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_eaa2987a4c1942279740670401e14842 = $(`<div id="html_eaa2987a4c1942279740670401e14842" style="width: 100.0%; height: 100.0%;">ДТП совершено 08.01.2020 в 11:10(утро)<br/>Место: ул. Гагарина/ул. Свердлова<br/>Наезд на пешехода<br/>пострадало 1 погибло 1 раненых нет<br/> Нарушения: Другие нарушения ПДД водителями    Переход через проезжую часть вне пешеходного перехода в зоне его видимости либо при наличии в непосредственной близости подземного (надземного) пешеходного перехода Сопутствующие нарушения: Сопутствующие нарушения не выявлены</div>`)[0];
+            popup_cfe549f8242d4655ac1f025374c32e76.setContent(html_eaa2987a4c1942279740670401e14842);
+        
+
+        marker_c0759084569c4b0b87443f7b602a78ca.bindPopup(popup_cfe549f8242d4655ac1f025374c32e76)
+        ;
+
+        
+    
+    
+            var marker_2d9a686a53564da597a22337fc767877 = L.marker(
+                [55.317553, 86.085841],
+                {}
+            ).addTo(marker_cluster_ee356e87e54d4fb0abb9da007f917d83);
+        
+    
+            var icon_420cccaafe42439f80de3e1354cb57ac = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_2d9a686a53564da597a22337fc767877.setIcon(icon_420cccaafe42439f80de3e1354cb57ac);
+        
+    
+        var popup_f9df0ac44725460081806c35ebadd92f = L.popup({"maxWidth": "100%"});
+
+        
+            var html_1595298ccbcd4971a9ded512df553534 = $(`<div id="html_1595298ccbcd4971a9ded512df553534" style="width: 100.0%; height: 100.0%;">ДТП совершено 11.01.2020 в 10:30(утро)<br/>Место: ул. Радищева/5.0<br/>Наезд на пешехода<br/>пострадало 1 погибло 1 раненых нет<br/> Нарушения: Другие нарушения ПДД водителями    Сопутствующие нарушения: Оставление места ДТП</div>`)[0];
+            popup_f9df0ac44725460081806c35ebadd92f.setContent(html_1595298ccbcd4971a9ded512df553534);
+        
+
+        marker_2d9a686a53564da597a22337fc767877.bindPopup(popup_f9df0ac44725460081806c35ebadd92f)
+        ;
+
+        
+    
+    
+            var marker_eb97e917b4c441718cc3374fe9087783 = L.marker(
+                [55.345084, 86.113249],
+                {}
+            ).addTo(marker_cluster_ee356e87e54d4fb0abb9da007f917d83);
+        
+    
+            var icon_be1aaa50ef7143c5abf95b1b49ee4586 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_eb97e917b4c441718cc3374fe9087783.setIcon(icon_be1aaa50ef7143c5abf95b1b49ee4586);
+        
+    
+        var popup_207fc8e4303d4aeb8599a901366351ff = L.popup({"maxWidth": "100%"});
+
+        
+            var html_b28d6a3da67d46899abc79d321b7edc1 = $(`<div id="html_b28d6a3da67d46899abc79d321b7edc1" style="width: 100.0%; height: 100.0%;">ДТП совершено 15.01.2020 в 20:05(вечер)<br/>Место: просп. Ленина/70.0<br/>Наезд на пешехода<br/>пострадало 1 погибло 1 раненых нет<br/> Нарушения: Переход через проезжую часть вне пешеходного перехода в зоне его видимости либо при наличии в непосредственной близости подземного (надземного) пешеходного перехода Сопутствующие нарушения: Пешеход в  состоянии алкогольного опьянения</div>`)[0];
+            popup_207fc8e4303d4aeb8599a901366351ff.setContent(html_b28d6a3da67d46899abc79d321b7edc1);
+        
+
+        marker_eb97e917b4c441718cc3374fe9087783.bindPopup(popup_207fc8e4303d4aeb8599a901366351ff)
+        ;
+
+        
+    
+    
+            var marker_8878ac7fe46a4e69893f4b42924b9cc8 = L.marker(
+                [55.385694, 86.089461],
+                {}
+            ).addTo(marker_cluster_ee356e87e54d4fb0abb9da007f917d83);
+        
+    
+            var icon_0e643fd4241e4a44960d18fdf571fb6c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_8878ac7fe46a4e69893f4b42924b9cc8.setIcon(icon_0e643fd4241e4a44960d18fdf571fb6c);
+        
+    
+        var popup_f54cf548c47e4d50b12d03225220c923 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_561601cb055a446a97b590c4be16f016 = $(`<div id="html_561601cb055a446a97b590c4be16f016" style="width: 100.0%; height: 100.0%;">ДТП совершено 16.01.2020 в 12:35(день)<br/>Место: ул. Рутгерса/ул. Нахимова,<br/>Наезд на пешехода<br/>пострадало 1 погибло 1 раненых нет<br/> Нарушения: Нарушение правил проезда пешеходного перехода Сопутствующие нарушения: Сопутствующие нарушения не выявлены</div>`)[0];
+            popup_f54cf548c47e4d50b12d03225220c923.setContent(html_561601cb055a446a97b590c4be16f016);
+        
+
+        marker_8878ac7fe46a4e69893f4b42924b9cc8.bindPopup(popup_f54cf548c47e4d50b12d03225220c923)
+        ;
+
+        
+    
+    
+            var marker_e394034ac25b44209b292918b1ac608a = L.marker(
+                [55.346717, 86.126813],
+                {}
+            ).addTo(marker_cluster_ee356e87e54d4fb0abb9da007f917d83);
+        
+    
+            var icon_70f71e676306408b95e3c67aa2708c3a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_e394034ac25b44209b292918b1ac608a.setIcon(icon_70f71e676306408b95e3c67aa2708c3a);
+        
+    
+        var popup_d674224b42da423c994c7857dd8fd901 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_eec82f2126ad47a1a600beeb2a9f571d = $(`<div id="html_eec82f2126ad47a1a600beeb2a9f571d" style="width: 100.0%; height: 100.0%;">ДТП совершено 16.01.2020 в 17:40(день)<br/>Место: Центральный/<br/>Наезд на пешехода<br/>пострадало 1 погибло 1 раненых нет<br/> Нарушения: Другие нарушения ПДД водителями Сопутствующие нарушения: Сопутствующие нарушения не выявлены</div>`)[0];
+            popup_d674224b42da423c994c7857dd8fd901.setContent(html_eec82f2126ad47a1a600beeb2a9f571d);
+        
+
+        marker_e394034ac25b44209b292918b1ac608a.bindPopup(popup_d674224b42da423c994c7857dd8fd901)
+        ;
+
+        
+    
+    
+            var marker_91702d684ef7498f84f773e7c7407e18 = L.marker(
+                [55.356472, 86.075798],
+                {}
+            ).addTo(marker_cluster_ee356e87e54d4fb0abb9da007f917d83);
+        
+    
+            var icon_db2214d9d6ba4fb294978797b889f6cf = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_91702d684ef7498f84f773e7c7407e18.setIcon(icon_db2214d9d6ba4fb294978797b889f6cf);
+        
+    
+        var popup_5968f0bd5ccd4dbabd598806c76162e7 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_3b6adfe737c04592906ae718241f1498 = $(`<div id="html_3b6adfe737c04592906ae718241f1498" style="width: 100.0%; height: 100.0%;">ДТП совершено 17.07.2020 в 12:30(день)<br/>Место: ул. Кирова/26.0<br/>Наезд на пешехода<br/>пострадало 1 погибло 1 раненых нет<br/> Нарушения: Нарушение правил проезда пешеходного перехода Сопутствующие нарушения: Несоблюдение требований ОСАГО                          Другие нарушения ПДД водителями</div>`)[0];
+            popup_5968f0bd5ccd4dbabd598806c76162e7.setContent(html_3b6adfe737c04592906ae718241f1498);
+        
+
+        marker_91702d684ef7498f84f773e7c7407e18.bindPopup(popup_5968f0bd5ccd4dbabd598806c76162e7)
+        ;
+
+        
+    
+    
+            var marker_0dca7455eb35465b9c450797c3b447b4 = L.marker(
+                [55.315299, 86.074028],
+                {}
+            ).addTo(marker_cluster_ee356e87e54d4fb0abb9da007f917d83);
+        
+    
+            var icon_f600c61076eb45e2b9f96ae0f7c800ea = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_0dca7455eb35465b9c450797c3b447b4.setIcon(icon_f600c61076eb45e2b9f96ae0f7c800ea);
+        
+    
+        var popup_afd81f1a1f8c406b91aee6e404ab8ff0 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_9a4aa3be08124eea8467ccf8989cac16 = $(`<div id="html_9a4aa3be08124eea8467ccf8989cac16" style="width: 100.0%; height: 100.0%;">ДТП совершено 17.01.2020 в 23:15(вечер)<br/>Место: ул. 1-я/44.0<br/>Наезд на пешехода<br/>пострадало 1 погибло 1 раненых нет<br/> Нарушения: Другие нарушения ПДД водителями Сопутствующие нарушения: Несоблюдение тредований ОСАГО</div>`)[0];
+            popup_afd81f1a1f8c406b91aee6e404ab8ff0.setContent(html_9a4aa3be08124eea8467ccf8989cac16);
+        
+
+        marker_0dca7455eb35465b9c450797c3b447b4.bindPopup(popup_afd81f1a1f8c406b91aee6e404ab8ff0)
+        ;
+
+        
+    
+    
+            var marker_0c0acb89c35d4a57a8564160e185fc88 = L.marker(
+                [55.367745, 86.117516],
+                {}
+            ).addTo(marker_cluster_ee356e87e54d4fb0abb9da007f917d83);
+        
+    
+            var icon_9c2bcdb5769e4400a12ac9d13bdc79f7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_0c0acb89c35d4a57a8564160e185fc88.setIcon(icon_9c2bcdb5769e4400a12ac9d13bdc79f7);
+        
+    
+        var popup_e788e626bb6c4dc4b45b367164c2d1a0 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_67db61f270cd40039389818efe7c9e6a = $(`<div id="html_67db61f270cd40039389818efe7c9e6a" style="width: 100.0%; height: 100.0%;">ДТП совершено 20.01.2020 в 14:30(день)<br/>Место: ул. Елыкаевская/107.0<br/>Наезд на пешехода<br/>пострадало 1 погибло 1 раненых нет<br/> Нарушения: Переход через проезжую часть вне пешеходного перехода в зоне его видимости либо при наличии в непосредственной близости подземного (надземного) пешеходного перехода Сопутствующие нарушения: Сопутствующие нарушения не выявлены</div>`)[0];
+            popup_e788e626bb6c4dc4b45b367164c2d1a0.setContent(html_67db61f270cd40039389818efe7c9e6a);
+        
+
+        marker_0c0acb89c35d4a57a8564160e185fc88.bindPopup(popup_e788e626bb6c4dc4b45b367164c2d1a0)
+        ;
+
+        
+    
+    
+            var marker_c14f0a093a304b248551b71777692e47 = L.marker(
+                [55.400752, 86.113437],
+                {}
+            ).addTo(marker_cluster_ee356e87e54d4fb0abb9da007f917d83);
+        
+    
+            var icon_60a9b066b5844e4384b5b0a5e504304d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_c14f0a093a304b248551b71777692e47.setIcon(icon_60a9b066b5844e4384b5b0a5e504304d);
+        
+    
+        var popup_a7f9fe49f2bc4eceb372c621b8189a46 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_e5e1451360de46e59da53a8ecefc42fb = $(`<div id="html_e5e1451360de46e59da53a8ecefc42fb" style="width: 100.0%; height: 100.0%;">ДТП совершено 21.01.2020 в 07:30(утро)<br/>Место: ул. Ногинская/10.0<br/>Наезд на пешехода<br/>пострадало 1 погибло 1 раненых нет<br/> Нарушения: Нарушение правил проезда пешеходного перехода Сопутствующие нарушения: Другие нарушения ПДД водителями</div>`)[0];
+            popup_a7f9fe49f2bc4eceb372c621b8189a46.setContent(html_e5e1451360de46e59da53a8ecefc42fb);
+        
+
+        marker_c14f0a093a304b248551b71777692e47.bindPopup(popup_a7f9fe49f2bc4eceb372c621b8189a46)
+        ;
+
+        
+    
+    
+            var marker_2259a8bb9a6e4b36be1b5114b4dec2da = L.marker(
+                [55.31471, 86.036838],
+                {}
+            ).addTo(marker_cluster_ee356e87e54d4fb0abb9da007f917d83);
+        
+    
+            var icon_8691b17b7b7f450498e8592531a8b79b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_2259a8bb9a6e4b36be1b5114b4dec2da.setIcon(icon_8691b17b7b7f450498e8592531a8b79b);
+        
+    
+        var popup_d3d3b1aefcf74f88baabd9e7167d9b05 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_9a96835d5fbe4ef39480631ee415372d = $(`<div id="html_9a96835d5fbe4ef39480631ee415372d" style="width: 100.0%; height: 100.0%;">ДТП совершено 24.01.2020 в 18:30(вечер)<br/>Место: просп. Кузнецкий/135.0<br/>Наезд на пешехода<br/>пострадало 1 погибло 1 раненых нет<br/> Нарушения: Нарушение правил проезда пешеходного перехода Сопутствующие нарушения: Оставление места ДТП</div>`)[0];
+            popup_d3d3b1aefcf74f88baabd9e7167d9b05.setContent(html_9a96835d5fbe4ef39480631ee415372d);
+        
+
+        marker_2259a8bb9a6e4b36be1b5114b4dec2da.bindPopup(popup_d3d3b1aefcf74f88baabd9e7167d9b05)
+        ;
+
+        
+    
+    
+            var marker_a03d6fd8629a4c72969ce14f9d4760ff = L.marker(
+                [55.388962, 86.030999],
+                {}
+            ).addTo(marker_cluster_ee356e87e54d4fb0abb9da007f917d83);
+        
+    
+            var icon_bda11ed1379d49b9a6c1a487ba9cb0a4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_a03d6fd8629a4c72969ce14f9d4760ff.setIcon(icon_bda11ed1379d49b9a6c1a487ba9cb0a4);
+        
+    
+        var popup_8ff8e382df9249f5bb57bb9988ef4ac3 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_5fd5920e3874458fa8acdb70a701ad48 = $(`<div id="html_5fd5920e3874458fa8acdb70a701ad48" style="width: 100.0%; height: 100.0%;">ДТП совершено 25.01.2020 в 18:35(вечер)<br/>Место: ул. Джамбулы/9.0<br/>Наезд на пешехода<br/>пострадало 1 погибло 1 раненых нет<br/> Нарушения: Нарушение правил проезда пешеходного перехода Сопутствующие нарушения: Сопутствующие нарушения не выявлены</div>`)[0];
+            popup_8ff8e382df9249f5bb57bb9988ef4ac3.setContent(html_5fd5920e3874458fa8acdb70a701ad48);
+        
+
+        marker_a03d6fd8629a4c72969ce14f9d4760ff.bindPopup(popup_8ff8e382df9249f5bb57bb9988ef4ac3)
+        ;
+
+        
+    
+    
+            var marker_fe7eea1c40b946f2b6d97efffead9ee8 = L.marker(
+                [55.343256, 86.087485],
+                {}
+            ).addTo(marker_cluster_ee356e87e54d4fb0abb9da007f917d83);
+        
+    
+            var icon_e4144265f4424706af6f748d184492cf = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_fe7eea1c40b946f2b6d97efffead9ee8.setIcon(icon_e4144265f4424706af6f748d184492cf);
+        
+    
+        var popup_4e935cbc396d4cef827f20458d2dcea5 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_270110b483d540caaa579a5ec57eede7 = $(`<div id="html_270110b483d540caaa579a5ec57eede7" style="width: 100.0%; height: 100.0%;">ДТП совершено 27.01.2020 в 08:19(утро)<br/>Место: пер. Мичурина/просп. Ленина,<br/>Наезд на пешехода<br/>пострадало 1 погибло 1 раненых нет<br/> Нарушения: Другие нарушения ПДД водителями Сопутствующие нарушения: Оставление места ДТП</div>`)[0];
+            popup_4e935cbc396d4cef827f20458d2dcea5.setContent(html_270110b483d540caaa579a5ec57eede7);
+        
+
+        marker_fe7eea1c40b946f2b6d97efffead9ee8.bindPopup(popup_4e935cbc396d4cef827f20458d2dcea5)
+        ;
+
+        
+    
+    
+            var marker_e55d4dbfe07b4bfd854ffaa690025621 = L.marker(
+                [55.340865, 86.181943],
+                {}
+            ).addTo(marker_cluster_ee356e87e54d4fb0abb9da007f917d83);
+        
+    
+            var icon_8c66991ae6c14099abaca196d4c671b7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_e55d4dbfe07b4bfd854ffaa690025621.setIcon(icon_8c66991ae6c14099abaca196d4c671b7);
+        
+    
+        var popup_502a1e10888a49c2bf7750b699b023da = L.popup({"maxWidth": "100%"});
+
+        
+            var html_a2cd60ed42454ff88c22507b78eaded2 = $(`<div id="html_a2cd60ed42454ff88c22507b78eaded2" style="width: 100.0%; height: 100.0%;">ДТП совершено 28.01.2020 в 07:55(утро)<br/>Место: просп. Ленинградский/32.0<br/>Наезд на пешехода<br/>пострадало 1 погибло 1 раненых нет<br/> Нарушения: Неподчинение сигналам регулирования (пешеход) Сопутствующие нарушения: Иные нарушения ПДД пешеходом</div>`)[0];
+            popup_502a1e10888a49c2bf7750b699b023da.setContent(html_a2cd60ed42454ff88c22507b78eaded2);
+        
+
+        marker_e55d4dbfe07b4bfd854ffaa690025621.bindPopup(popup_502a1e10888a49c2bf7750b699b023da)
+        ;
+
+        
+    
+    
+            var marker_97446236212940ecb11b79f887559fca = L.marker(
+                [55.336416, 86.11562],
+                {}
+            ).addTo(marker_cluster_ee356e87e54d4fb0abb9da007f917d83);
+        
+    
+            var icon_4eb2da574a674476a9a9cd5a7546cb71 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_97446236212940ecb11b79f887559fca.setIcon(icon_4eb2da574a674476a9a9cd5a7546cb71);
+        
+    
+        var popup_b078a7bfb5594ab5a6486ca2dffed4cc = L.popup({"maxWidth": "100%"});
+
+        
+            var html_2d4793d183c54fcabd940be1f896ba51 = $(`<div id="html_2d4793d183c54fcabd940be1f896ba51" style="width: 100.0%; height: 100.0%;">ДТП совершено 28.01.2020 в 12:40(день)<br/>Место: ул. Сибиряков-Гвардейцев/232.0<br/>Наезд на пешехода<br/>пострадало 1 погибло 1 раненых нет<br/> Нарушения: Нарушение правил проезда пешеходного перехода Сопутствующие нарушения: Эксплуатация незарегистрированного ТС</div>`)[0];
+            popup_b078a7bfb5594ab5a6486ca2dffed4cc.setContent(html_2d4793d183c54fcabd940be1f896ba51);
+        
+
+        marker_97446236212940ecb11b79f887559fca.bindPopup(popup_b078a7bfb5594ab5a6486ca2dffed4cc)
+        ;
+
+        
+    
+    
+            var marker_c833986de1924802a2a4cf0ca48185d8 = L.marker(
+                [55.400093, 86.017416],
+                {}
+            ).addTo(marker_cluster_ee356e87e54d4fb0abb9da007f917d83);
+        
+    
+            var icon_b81fb7f296174593968e7552b86a1834 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_c833986de1924802a2a4cf0ca48185d8.setIcon(icon_b81fb7f296174593968e7552b86a1834);
+        
+    
+        var popup_9b66481fda3e4ae1b32eaaaa88fd1f99 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_cdcb1bf0b8264438b85ba0351edb6745 = $(`<div id="html_cdcb1bf0b8264438b85ba0351edb6745" style="width: 100.0%; height: 100.0%;">ДТП совершено 29.01.2020 в 07:45(утро)<br/>Место: Кировский/<br/>Наезд на пешехода<br/>пострадало 2 погибло 2 раненых нет<br/> Нарушения: Нарушение правил обгона Сопутствующие нарушения: Сопутствующие нарушения не выявлены</div>`)[0];
+            popup_9b66481fda3e4ae1b32eaaaa88fd1f99.setContent(html_cdcb1bf0b8264438b85ba0351edb6745);
+        
+
+        marker_c833986de1924802a2a4cf0ca48185d8.bindPopup(popup_9b66481fda3e4ae1b32eaaaa88fd1f99)
+        ;
+
+        
+    
+    
+            var marker_26ade21a36aa4119bfd1ab0c71186d25 = L.marker(
+                [55.339949, 86.136614],
+                {}
+            ).addTo(marker_cluster_ee356e87e54d4fb0abb9da007f917d83);
+        
+    
+            var icon_9d17fe6615cd4b519d144afadcb1fd59 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_26ade21a36aa4119bfd1ab0c71186d25.setIcon(icon_9d17fe6615cd4b519d144afadcb1fd59);
+        
+    
+        var popup_cf5b1fbc7c994ebb83e7e54741b9ada1 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_d28fb0da820f4052a109fc0ed7053a68 = $(`<div id="html_d28fb0da820f4052a109fc0ed7053a68" style="width: 100.0%; height: 100.0%;">ДТП совершено 29.01.2020 в 09:30(утро)<br/>Место: ул. Гагарина/136.0<br/>Наезд на пешехода<br/>пострадало 1 погибло 1 раненых нет<br/> Нарушения: Нарушение правил проезда пешеходного перехода Сопутствующие нарушения: Несоблюдение требований ОСАГО                 Эксплуатация незарегистрированного ТС</div>`)[0];
+            popup_cf5b1fbc7c994ebb83e7e54741b9ada1.setContent(html_d28fb0da820f4052a109fc0ed7053a68);
+        
+
+        marker_26ade21a36aa4119bfd1ab0c71186d25.bindPopup(popup_cf5b1fbc7c994ebb83e7e54741b9ada1)
+        ;
+
+        
+    
+    
+            var marker_18b92fbf5dfe4e1a82eb78d55f18f3c2 = L.marker(
+                [55.397066, 86.113554],
+                {}
+            ).addTo(marker_cluster_ee356e87e54d4fb0abb9da007f917d83);
+        
+    
+            var icon_44a0ec6f49704b76a04bc7a02e83c0b8 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_18b92fbf5dfe4e1a82eb78d55f18f3c2.setIcon(icon_44a0ec6f49704b76a04bc7a02e83c0b8);
+        
+    
+        var popup_5f9464d1a2ee43fca60a22909f596f51 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_d494109d0cf94d9fb670da8a19045c39 = $(`<div id="html_d494109d0cf94d9fb670da8a19045c39" style="width: 100.0%; height: 100.0%;">ДТП совершено 29.01.2020 в 09:54(утро)<br/>Место: просп. Шахтеров/73.0<br/>Наезд на пешехода<br/>пострадало 1 погибло 1 раненых нет<br/> Нарушения: Неподчинение сигналам регулирования (пешеход) Сопутствующие нарушения: Сопутствующие нарушения не выявлены</div>`)[0];
+            popup_5f9464d1a2ee43fca60a22909f596f51.setContent(html_d494109d0cf94d9fb670da8a19045c39);
+        
+
+        marker_18b92fbf5dfe4e1a82eb78d55f18f3c2.bindPopup(popup_5f9464d1a2ee43fca60a22909f596f51)
+        ;
+
+        
+    
+    
+            var marker_cluster_0b5b0af37ff844c2aae998a85782237a = L.markerClusterGroup(
+                {}
+            );
+            map_c0655e08a3f44f4481a0ea097c6aed9a.addLayer(marker_cluster_0b5b0af37ff844c2aae998a85782237a);
+        
+    
+            var marker_cluster_35cca29320d24423ae0acec96b7f674e = L.markerClusterGroup(
+                {}
+            );
+            map_c0655e08a3f44f4481a0ea097c6aed9a.addLayer(marker_cluster_35cca29320d24423ae0acec96b7f674e);
+        
+    
+            var marker_37a379c3dc8d41369ac2ae517348bf6f = L.marker(
+                [55.3085, 86.084476],
+                {}
+            ).addTo(marker_cluster_35cca29320d24423ae0acec96b7f674e);
+        
+    
+            var icon_fa1667d684d247a5b412a2bf118b8b94 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_37a379c3dc8d41369ac2ae517348bf6f.setIcon(icon_fa1667d684d247a5b412a2bf118b8b94);
+        
+    
+        var popup_2cecfe1ae63746f4a706fb408f00403c = L.popup({"maxWidth": "100%"});
+
+        
+            var html_3dbfac440563437381a2be49f27d7c99 = $(`<div id="html_3dbfac440563437381a2be49f27d7c99" style="width: 100.0%; height: 100.0%;">ДТП совершено 25.01.2020 в 20:05(вечер)<br/>Место: ул. 1-я/20Д<br/>Наезд на стоящее ТС<br/>пострадало 2 погибло 2 раненых нет<br/> Нарушения: Другие нарушения ПДД водителями Сопутствующие нарушения: Управление ТС лицом, не имеющим права управления ТС                                            Управление ТС лицом, находящимся в состоянии алкогольного опьянения и не имеющим права управления ТС либо лишенным права управления ТС            Несоблюдение требований ОСАГО</div>`)[0];
+            popup_2cecfe1ae63746f4a706fb408f00403c.setContent(html_3dbfac440563437381a2be49f27d7c99);
+        
+
+        marker_37a379c3dc8d41369ac2ae517348bf6f.bindPopup(popup_2cecfe1ae63746f4a706fb408f00403c)
+        ;
+
+        
+    
+    
+            var marker_cluster_f11a103bf7ed425381c215059ef30e5b = L.markerClusterGroup(
+                {}
+            );
+            map_c0655e08a3f44f4481a0ea097c6aed9a.addLayer(marker_cluster_f11a103bf7ed425381c215059ef30e5b);
+        
+    
+            var marker_cluster_f3cb33f280e2452180c1bf07ac2f0ac1 = L.markerClusterGroup(
+                {}
+            );
+            map_c0655e08a3f44f4481a0ea097c6aed9a.addLayer(marker_cluster_f3cb33f280e2452180c1bf07ac2f0ac1);
+        
+    
+            var marker_16201e85c1d94b428acae6c777f16666 = L.marker(
+                [55.344807, 86.131503],
+                {}
+            ).addTo(marker_cluster_f3cb33f280e2452180c1bf07ac2f0ac1);
+        
+    
+            var icon_13d37a80a86944c2af48610cb987533a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_16201e85c1d94b428acae6c777f16666.setIcon(icon_13d37a80a86944c2af48610cb987533a);
+        
+    
+        var popup_a14e85ca28044d2aaf2f7d4ddc57cab1 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_6e51b030ac554c6f94bf76dd3998145c = $(`<div id="html_6e51b030ac554c6f94bf76dd3998145c" style="width: 100.0%; height: 100.0%;">ДТП совершено 09.01.2020 в 07:40(утро)<br/>Место: просп. Ленина,/ул. Тухачевксого<br/>Падение пассажира<br/>пострадало 1 погибло 1 раненых нет<br/> Нарушения: Нарушение правил пользования общественным транспортном Сопутствующие нарушения: Сопутствующие нарушения не выявлены</div>`)[0];
+            popup_a14e85ca28044d2aaf2f7d4ddc57cab1.setContent(html_6e51b030ac554c6f94bf76dd3998145c);
+        
+
+        marker_16201e85c1d94b428acae6c777f16666.bindPopup(popup_a14e85ca28044d2aaf2f7d4ddc57cab1)
+        ;
+
+        
+    
+    
+            var marker_cluster_f4c38edc02c94c01acf2dab2523c0e46 = L.markerClusterGroup(
+                {}
+            );
+            map_c0655e08a3f44f4481a0ea097c6aed9a.addLayer(marker_cluster_f4c38edc02c94c01acf2dab2523c0e46);
+        
+    
+            var marker_001be467f93140179985bde024a17d20 = L.marker(
+                [55.336288, 86.099828],
+                {}
+            ).addTo(marker_cluster_f4c38edc02c94c01acf2dab2523c0e46);
+        
+    
+            var icon_a8a19b20f477459a97047b35fe374f5b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_001be467f93140179985bde024a17d20.setIcon(icon_a8a19b20f477459a97047b35fe374f5b);
+        
+    
+        var popup_7ec562b58ac64cf691ab45b15a647ad1 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_be58749cf31d4b7594712c701e5030f7 = $(`<div id="html_be58749cf31d4b7594712c701e5030f7" style="width: 100.0%; height: 100.0%;">ДТП совершено 05.01.2020 в 23:47(вечер)<br/>Место: ул. Сибиряков-Гвардейцев/164.0<br/>Столкновение<br/>пострадало 2 погибло 2 раненых нет<br/> Нарушения: Неправильный выбор дистанции Сопутствующие нарушения: Отказ водителя от происхождения медицинского освидетельствования на состояние опьянения</div>`)[0];
+            popup_7ec562b58ac64cf691ab45b15a647ad1.setContent(html_be58749cf31d4b7594712c701e5030f7);
+        
+
+        marker_001be467f93140179985bde024a17d20.bindPopup(popup_7ec562b58ac64cf691ab45b15a647ad1)
+        ;
+
+        
+    
+    
+            var marker_fe10cf6a672d4572804b79534a0daf20 = L.marker(
+                [55.339811, 86.138707],
+                {}
+            ).addTo(marker_cluster_f4c38edc02c94c01acf2dab2523c0e46);
+        
+    
+            var icon_124b42d271e248c0af3c893bb71cb735 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_fe10cf6a672d4572804b79534a0daf20.setIcon(icon_124b42d271e248c0af3c893bb71cb735);
+        
+    
+        var popup_c4f1713f06914d69871e97e93353f67e = L.popup({"maxWidth": "100%"});
+
+        
+            var html_e42b5296b89f479b92a98315c61fb41e = $(`<div id="html_e42b5296b89f479b92a98315c61fb41e" style="width: 100.0%; height: 100.0%;">ДТП совершено 06.01.2020 в 10:25(утро)<br/>Место: ул. Терешковой,/ул. Гагарина<br/>Столкновение<br/>пострадало 1 погибло 1 раненых нет<br/> Нарушения: Выезд на полосу встречного движения Сопутствующие нарушения: Другие нарушения ПДД водителями</div>`)[0];
+            popup_c4f1713f06914d69871e97e93353f67e.setContent(html_e42b5296b89f479b92a98315c61fb41e);
+        
+
+        marker_fe10cf6a672d4572804b79534a0daf20.bindPopup(popup_c4f1713f06914d69871e97e93353f67e)
+        ;
+
+        
+    
+    
+            var marker_95c5b53b5b2c42278039ec869bb08397 = L.marker(
+                [55.346722, 86.090018],
+                {}
+            ).addTo(marker_cluster_f4c38edc02c94c01acf2dab2523c0e46);
+        
+    
+            var icon_691872f662e94388b14de089651abe67 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_95c5b53b5b2c42278039ec869bb08397.setIcon(icon_691872f662e94388b14de089651abe67);
+        
+    
+        var popup_6e35521b51a9493ea82019b2e9bd040e = L.popup({"maxWidth": "100%"});
+
+        
+            var html_111f5ac582ab43de8963e2b6d61e5583 = $(`<div id="html_111f5ac582ab43de8963e2b6d61e5583" style="width: 100.0%; height: 100.0%;">ДТП совершено 08.01.2020 в 12:20(день)<br/>Место: ул. Красноармейская/139.0<br/>Столкновение<br/>пострадало 1 погибло 1 раненых нет<br/> Нарушения: Нарушение правил расположения ТС на проезжей части Сопутствующие нарушения: Несоблюдение требований ОСАГО                          Другие нарушения ПДД водителями</div>`)[0];
+            popup_6e35521b51a9493ea82019b2e9bd040e.setContent(html_111f5ac582ab43de8963e2b6d61e5583);
+        
+
+        marker_95c5b53b5b2c42278039ec869bb08397.bindPopup(popup_6e35521b51a9493ea82019b2e9bd040e)
+        ;
+
+        
+    
+    
+            var marker_bbcb89a20fb24af6a8ae4fe3e09e4c4f = L.marker(
+                [55.34493, 86.148112],
+                {}
+            ).addTo(marker_cluster_f4c38edc02c94c01acf2dab2523c0e46);
+        
+    
+            var icon_da61b99c25844a1d8509fa36bcfc1710 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_bbcb89a20fb24af6a8ae4fe3e09e4c4f.setIcon(icon_da61b99c25844a1d8509fa36bcfc1710);
+        
+    
+        var popup_2c6285059ddd49e3b20d0442169b860c = L.popup({"maxWidth": "100%"});
+
+        
+            var html_7270c4961ebf4e939a897ecf0e2f8721 = $(`<div id="html_7270c4961ebf4e939a897ecf0e2f8721" style="width: 100.0%; height: 100.0%;">ДТП совершено 08.01.2020 в 16:05(день)<br/>Место: просп. Ленина,/ул. Волгоградская<br/>Столкновение<br/>пострадало 1 погибло 1 раненых нет<br/> Нарушения: Нарушение требований сигналов светофора Сопутствующие нарушения: Несоблюдение требований ОСАГО                          Другие нарушения ПДД водителями</div>`)[0];
+            popup_2c6285059ddd49e3b20d0442169b860c.setContent(html_7270c4961ebf4e939a897ecf0e2f8721);
+        
+
+        marker_bbcb89a20fb24af6a8ae4fe3e09e4c4f.bindPopup(popup_2c6285059ddd49e3b20d0442169b860c)
+        ;
+
+        
+    
+    
+            var marker_7dabb951120a4af2a88f147cf12e8996 = L.marker(
+                [55.321118, 86.154859],
+                {}
+            ).addTo(marker_cluster_f4c38edc02c94c01acf2dab2523c0e46);
+        
+    
+            var icon_d16323ee0c8544308001bb62647f59c7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_7dabb951120a4af2a88f147cf12e8996.setIcon(icon_d16323ee0c8544308001bb62647f59c7);
+        
+    
+        var popup_e0f6ab03814d4da3b409d6cbcb5b8fb4 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_e9de4cb6f1a24eceb71c7ccf47952b9e = $(`<div id="html_e9de4cb6f1a24eceb71c7ccf47952b9e" style="width: 100.0%; height: 100.0%;">ДТП совершено 08.01.2020 в 19:21(вечер)<br/>Место: ул. Терешковой,/45Б<br/>Столкновение<br/>пострадало 3 погибло 3 раненых нет<br/> Нарушения: Несоблюдение очередности проезда Сопутствующие нарушения: Другие нарушения ПДД водителями</div>`)[0];
+            popup_e0f6ab03814d4da3b409d6cbcb5b8fb4.setContent(html_e9de4cb6f1a24eceb71c7ccf47952b9e);
+        
+
+        marker_7dabb951120a4af2a88f147cf12e8996.bindPopup(popup_e0f6ab03814d4da3b409d6cbcb5b8fb4)
+        ;
+
+        
+    
+    
+            var marker_ed4208e111f9448ca09bc53a2cdb0965 = L.marker(
+                [55.336308, 86.101984],
+                {}
+            ).addTo(marker_cluster_f4c38edc02c94c01acf2dab2523c0e46);
+        
+    
+            var icon_2a3b04ea19f44d6187ec3136e7ac49d5 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_ed4208e111f9448ca09bc53a2cdb0965.setIcon(icon_2a3b04ea19f44d6187ec3136e7ac49d5);
+        
+    
+        var popup_e6173cce2fce4e659e96a3415e035827 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_b2b3361198c144cc96e7f5d1c800b5ab = $(`<div id="html_b2b3361198c144cc96e7f5d1c800b5ab" style="width: 100.0%; height: 100.0%;">ДТП совершено 09.01.2020 в 02:15(ночь)<br/>Место: ул. Сибиряков-Гвардейцев/170.0<br/>Столкновение<br/>пострадало 1 погибло 1 раненых нет<br/> Нарушения: Неправильный выбор дистанции Сопутствующие нарушения: Управление ТС лицом, не имеющим права на управление ТС                                                 Отказ водителя, не имеющего права управления ТС либо лишенного права управления ТС от прохождения медицинского освидетельствования на состояние алкоголь                                        Другие нарешения ПДД водителями </div>`)[0];
+            popup_e6173cce2fce4e659e96a3415e035827.setContent(html_b2b3361198c144cc96e7f5d1c800b5ab);
+        
+
+        marker_ed4208e111f9448ca09bc53a2cdb0965.bindPopup(popup_e6173cce2fce4e659e96a3415e035827)
+        ;
+
+        
+    
+    
+            var marker_c4bcb68614394e628625362fbb6d2f96 = L.marker(
+                [55.354727, 86.088374],
+                {}
+            ).addTo(marker_cluster_f4c38edc02c94c01acf2dab2523c0e46);
+        
+    
+            var icon_1cc0afe6675c4aa5b37f8a2b3f665586 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_c4bcb68614394e628625362fbb6d2f96.setIcon(icon_1cc0afe6675c4aa5b37f8a2b3f665586);
+        
+    
+        var popup_0fdabccbf6c246958fcc5ba25d21d5a7 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_ba6b4b4a570b4979b2f8ca1d305dc93d = $(`<div id="html_ba6b4b4a570b4979b2f8ca1d305dc93d" style="width: 100.0%; height: 100.0%;">ДТП совершено 10.01.2020 в 13:15(день)<br/>Место: автомобильная дорога/<br/>Столкновение<br/>пострадало 3 погибло 3 раненых нет<br/> Нарушения: Несоблюдение очередности проезда Сопутствующие нарушения: Другие нарушения ПДД водителями</div>`)[0];
+            popup_0fdabccbf6c246958fcc5ba25d21d5a7.setContent(html_ba6b4b4a570b4979b2f8ca1d305dc93d);
+        
+
+        marker_c4bcb68614394e628625362fbb6d2f96.bindPopup(popup_0fdabccbf6c246958fcc5ba25d21d5a7)
+        ;
+
+        
+    
+    
+            var marker_3798dbe11e1f44efa88e2a51970ea831 = L.marker(
+                [55.386809, 86.067875],
+                {}
+            ).addTo(marker_cluster_f4c38edc02c94c01acf2dab2523c0e46);
+        
+    
+            var icon_bd4d6464e6be481c9ab766f827a7c0fb = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_3798dbe11e1f44efa88e2a51970ea831.setIcon(icon_bd4d6464e6be481c9ab766f827a7c0fb);
+        
+    
+        var popup_a64c32c336844c9b8d26023091a33eda = L.popup({"maxWidth": "100%"});
+
+        
+            var html_905884a6be414e6fbc8dcbdda931ea11 = $(`<div id="html_905884a6be414e6fbc8dcbdda931ea11" style="width: 100.0%; height: 100.0%;">ДТП совершено 11.01.2020 в 22:20(вечер)<br/>Место: ул. Шахтерская/3 стр1<br/>Столкновение<br/>пострадало 1 погибло 1 раненых нет<br/> Нарушения: Несоблюдение очередности проезда Сопутствующие нарушения: Сопутствующие нарушения не выявлены</div>`)[0];
+            popup_a64c32c336844c9b8d26023091a33eda.setContent(html_905884a6be414e6fbc8dcbdda931ea11);
+        
+
+        marker_3798dbe11e1f44efa88e2a51970ea831.bindPopup(popup_a64c32c336844c9b8d26023091a33eda)
+        ;
+
+        
+    
+    
+            var marker_f978499f128d47d59a707179af1dcbc7 = L.marker(
+                [55.373045, 86.128071],
+                {}
+            ).addTo(marker_cluster_f4c38edc02c94c01acf2dab2523c0e46);
+        
+    
+            var icon_d970cff6208242929dadf4b58feb66eb = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_f978499f128d47d59a707179af1dcbc7.setIcon(icon_d970cff6208242929dadf4b58feb66eb);
+        
+    
+        var popup_963b3b2a32e047839e500709ab9d1caf = L.popup({"maxWidth": "100%"});
+
+        
+            var html_afd5ee95270d4504ae4ade99f43ef3d7 = $(`<div id="html_afd5ee95270d4504ae4ade99f43ef3d7" style="width: 100.0%; height: 100.0%;">ДТП совершено 14.01.2020 в 07:40(утро)<br/>Место: у. Терешковой/ул. Арсеньева,<br/>Столкновение<br/>пострадало 4 погибло 4 раненых нет<br/> Нарушения: Нарушение правил обгона Сопутствующие нарушения: Несоблюдение требований ОСАГО                          Другие нарушения ПДД водителями</div>`)[0];
+            popup_963b3b2a32e047839e500709ab9d1caf.setContent(html_afd5ee95270d4504ae4ade99f43ef3d7);
+        
+
+        marker_f978499f128d47d59a707179af1dcbc7.bindPopup(popup_963b3b2a32e047839e500709ab9d1caf)
+        ;
+
+        
+    
+    
+            var marker_0956be17346c45b0a5fd3aa4b858ce7e = L.marker(
+                [55.353483, 86.061389],
+                {}
+            ).addTo(marker_cluster_f4c38edc02c94c01acf2dab2523c0e46);
+        
+    
+            var icon_c8d1a0f292384999a826a85f23af22d0 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_0956be17346c45b0a5fd3aa4b858ce7e.setIcon(icon_c8d1a0f292384999a826a85f23af22d0);
+        
+    
+        var popup_479e47f3b7154077b7aa2b2eb9d4cc31 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_7e9cb069df8248ad979bc8b51e54da4e = $(`<div id="html_7e9cb069df8248ad979bc8b51e54da4e" style="width: 100.0%; height: 100.0%;">ДТП совершено 15.01.2020 в 10:20(утро)<br/>Место: ул. Красноармейская/59А<br/>Столкновение<br/>пострадало 2 погибло 2 раненых нет<br/> Нарушения: Несоблюдение очередности проезда Сопутствующие нарушения: Сопутствующие нарушения не выявлены</div>`)[0];
+            popup_479e47f3b7154077b7aa2b2eb9d4cc31.setContent(html_7e9cb069df8248ad979bc8b51e54da4e);
+        
+
+        marker_0956be17346c45b0a5fd3aa4b858ce7e.bindPopup(popup_479e47f3b7154077b7aa2b2eb9d4cc31)
+        ;
+
+        
+    
+    
+            var marker_285e6b3bc7fb42ec93f5f9a73ce52cb4 = L.marker(
+                [55.295334, 86.141555],
+                {}
+            ).addTo(marker_cluster_f4c38edc02c94c01acf2dab2523c0e46);
+        
+    
+            var icon_fffb58d9147b41b0a42f39880cabd482 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_285e6b3bc7fb42ec93f5f9a73ce52cb4.setIcon(icon_fffb58d9147b41b0a42f39880cabd482);
+        
+    
+        var popup_5996a2fe5f504f448c62a4447eee03dc = L.popup({"maxWidth": "100%"});
+
+        
+            var html_50fbaa44d6af4e40b1edd79fabff566e = $(`<div id="html_50fbaa44d6af4e40b1edd79fabff566e" style="width: 100.0%; height: 100.0%;">ДТП совершено 17.01.2020 в 13:30(день)<br/>Место: ул. Тухачевского/68к1<br/>Столкновение<br/>пострадало 2 погибло 2 раненых нет<br/> Нарушения: Неправильный выбор дистанции Сопутствующие нарушения: Сопутствующие нарушения не выявлены</div>`)[0];
+            popup_5996a2fe5f504f448c62a4447eee03dc.setContent(html_50fbaa44d6af4e40b1edd79fabff566e);
+        
+
+        marker_285e6b3bc7fb42ec93f5f9a73ce52cb4.bindPopup(popup_5996a2fe5f504f448c62a4447eee03dc)
+        ;
+
+        
+    
+    
+            var marker_6e14b14c2ebf42adb75946bafb3b2475 = L.marker(
+                [55.347162, 86.153826],
+                {}
+            ).addTo(marker_cluster_f4c38edc02c94c01acf2dab2523c0e46);
+        
+    
+            var icon_b6cf30fc7a724f348819e38a50d274e7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_6e14b14c2ebf42adb75946bafb3b2475.setIcon(icon_b6cf30fc7a724f348819e38a50d274e7);
+        
+    
+        var popup_dbd566801f514d39a3001d8a25df1cf5 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_900792fcb2a24ac1b71e3af2f1e65aef = $(`<div id="html_900792fcb2a24ac1b71e3af2f1e65aef" style="width: 100.0%; height: 100.0%;">ДТП совершено 17.01.2020 в 19:10(вечер)<br/>Место: просп. Ленина/124.0<br/>Столкновение<br/>пострадало 2 погибло 2 раненых нет<br/> Нарушения: Несоблюдение очередности проезда Сопутствующие нарушения: Сопутствующие нарушения не выявлены</div>`)[0];
+            popup_dbd566801f514d39a3001d8a25df1cf5.setContent(html_900792fcb2a24ac1b71e3af2f1e65aef);
+        
+
+        marker_6e14b14c2ebf42adb75946bafb3b2475.bindPopup(popup_dbd566801f514d39a3001d8a25df1cf5)
+        ;
+
+        
+    
+    
+            var marker_27d33426e3974e66879cbd70147ab437 = L.marker(
+                [55.351774, 86.169259],
+                {}
+            ).addTo(marker_cluster_f4c38edc02c94c01acf2dab2523c0e46);
+        
+    
+            var icon_360552ff1f0b4097a9a186b3353ce766 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_27d33426e3974e66879cbd70147ab437.setIcon(icon_360552ff1f0b4097a9a186b3353ce766);
+        
+    
+        var popup_84b941fb0ac84360a5d104a61dcbee6a = L.popup({"maxWidth": "100%"});
+
+        
+            var html_a417a8e909c145ad8f84bba97dc0a4e1 = $(`<div id="html_a417a8e909c145ad8f84bba97dc0a4e1" style="width: 100.0%; height: 100.0%;">ДТП совершено 19.01.2020 в 20:15(вечер)<br/>Место: просп. Ленина/146.0<br/>Столкновение<br/>пострадало 3 погибло 3 раненых нет<br/> Нарушения: Несоблюдение очередности проезда Сопутствующие нарушения: Несоблюдение требований ОСАГО                          Другие нарушения ПДД водителями</div>`)[0];
+            popup_84b941fb0ac84360a5d104a61dcbee6a.setContent(html_a417a8e909c145ad8f84bba97dc0a4e1);
+        
+
+        marker_27d33426e3974e66879cbd70147ab437.bindPopup(popup_84b941fb0ac84360a5d104a61dcbee6a)
+        ;
+
+        
+    
+    
+            var marker_28f94164b3c6444ab61bc2e20d1119b4 = L.marker(
+                [55.363084, 86.072169],
+                {}
+            ).addTo(marker_cluster_f4c38edc02c94c01acf2dab2523c0e46);
+        
+    
+            var icon_aebb145e2f564da4a774738479618a90 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_28f94164b3c6444ab61bc2e20d1119b4.setIcon(icon_aebb145e2f564da4a774738479618a90);
+        
+    
+        var popup_b3a1387cd8764bc7ac9b65441548cf9b = L.popup({"maxWidth": "100%"});
+
+        
+            var html_1b48a2795a804a24a38a6087c9324551 = $(`<div id="html_1b48a2795a804a24a38a6087c9324551" style="width: 100.0%; height: 100.0%;">ДТП совершено 19.01.2020 в 23:05(вечер)<br/>Место: просп. Кузнецкий/14.0<br/>Столкновение<br/>пострадало 1 ранено 1 погибших нет<br/> Нарушения: Нарушение правил перестроения Сопутствующие нарушения: Другие нарушения ПДД водителями</div>`)[0];
+            popup_b3a1387cd8764bc7ac9b65441548cf9b.setContent(html_1b48a2795a804a24a38a6087c9324551);
+        
+
+        marker_28f94164b3c6444ab61bc2e20d1119b4.bindPopup(popup_b3a1387cd8764bc7ac9b65441548cf9b)
+        ;
+
+        
+    
+    
+            var marker_1d3323bfd03a48bc878346ec09379c60 = L.marker(
+                [55.315463, 86.134072],
+                {}
+            ).addTo(marker_cluster_f4c38edc02c94c01acf2dab2523c0e46);
+        
+    
+            var icon_962fd3f3091b443c9403d3d91477585e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_1d3323bfd03a48bc878346ec09379c60.setIcon(icon_962fd3f3091b443c9403d3d91477585e);
+        
+    
+        var popup_96b2c9559a844499acbaf9567c50b6ff = L.popup({"maxWidth": "100%"});
+
+        
+            var html_ddff4b40d6eb4b9c91951d7b606469eb = $(`<div id="html_ddff4b40d6eb4b9c91951d7b606469eb" style="width: 100.0%; height: 100.0%;">ДТП совершено 23.01.2020 в 10:50(утро)<br/>Место: ул. Тухачевского/63.0<br/>Столкновение<br/>пострадало 1 погибло 1 раненых нет<br/> Нарушения: Нарушение правил расположения ТС на проезжей части Сопутствующие нарушения: Сопутствующие нарушения не выявлены</div>`)[0];
+            popup_96b2c9559a844499acbaf9567c50b6ff.setContent(html_ddff4b40d6eb4b9c91951d7b606469eb);
+        
+
+        marker_1d3323bfd03a48bc878346ec09379c60.bindPopup(popup_96b2c9559a844499acbaf9567c50b6ff)
+        ;
+
+        
+    
+    
+            var marker_1a449d00d0e24d39a7530a4169516358 = L.marker(
+                [55.317845, 86.087665],
+                {}
+            ).addTo(marker_cluster_f4c38edc02c94c01acf2dab2523c0e46);
+        
+    
+            var icon_cf154c9ad2774b1aba89ce7e99bde6a7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_1a449d00d0e24d39a7530a4169516358.setIcon(icon_cf154c9ad2774b1aba89ce7e99bde6a7);
+        
+    
+        var popup_ddd7b4dbd9484c508a9614ee8c94dc71 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_fcdf852b62ed44908fdc5fde52f1e2ea = $(`<div id="html_fcdf852b62ed44908fdc5fde52f1e2ea" style="width: 100.0%; height: 100.0%;">ДТП совершено 24.01.2020 в 06:00(утро)<br/>Место: ул. Космическая/ул. Радищева<br/>Столкновение<br/>пострадало 1 погибло 1 раненых нет<br/> Нарушения: Несоблюдение очередности проезда Сопутствующие нарушения: Сопутствующие нарушения не выявлены</div>`)[0];
+            popup_ddd7b4dbd9484c508a9614ee8c94dc71.setContent(html_fcdf852b62ed44908fdc5fde52f1e2ea);
+        
+
+        marker_1a449d00d0e24d39a7530a4169516358.bindPopup(popup_ddd7b4dbd9484c508a9614ee8c94dc71)
+        ;
+
+        
+    
+    
+            var marker_70767109fa19403f899627b4ecf73335 = L.marker(
+                [55.347474, 86.091339],
+                {}
+            ).addTo(marker_cluster_f4c38edc02c94c01acf2dab2523c0e46);
+        
+    
+            var icon_7d85df414d82454d86e9cce96099dc98 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_70767109fa19403f899627b4ecf73335.setIcon(icon_7d85df414d82454d86e9cce96099dc98);
+        
+    
+        var popup_889daa205af1427a979a88b6523b8da7 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_1fbf2d4152604fa99baf831bbb415606 = $(`<div id="html_1fbf2d4152604fa99baf831bbb415606" style="width: 100.0%; height: 100.0%;">ДТП совершено 26.01.2020 в 00:50(ночь)<br/>Место: ул. Красноармейская/144.0<br/>Столкновение<br/>пострадало 1 погибло 1 раненых нет<br/> Нарушения: Несоблюдение очередности проезда Сопутствующие нарушения: Несоблюдение требований ОСАГО                          Другие нарушения ПДД водителями</div>`)[0];
+            popup_889daa205af1427a979a88b6523b8da7.setContent(html_1fbf2d4152604fa99baf831bbb415606);
+        
+
+        marker_70767109fa19403f899627b4ecf73335.bindPopup(popup_889daa205af1427a979a88b6523b8da7)
+        ;
+
+        
+    
+    
+            var marker_8adf51cdeaec4fcfa5682d1b5c84bdfa = L.marker(
+                [55.344106, 86.083937],
+                {}
+            ).addTo(marker_cluster_f4c38edc02c94c01acf2dab2523c0e46);
+        
+    
+            var icon_109d5a26c1d64944a712ce8f912f2c41 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_8adf51cdeaec4fcfa5682d1b5c84bdfa.setIcon(icon_109d5a26c1d64944a712ce8f912f2c41);
+        
+    
+        var popup_8f811eb984d64a138afd876df4600f2e = L.popup({"maxWidth": "100%"});
+
+        
+            var html_b787513b81e649778674fc41f154e683 = $(`<div id="html_b787513b81e649778674fc41f154e683" style="width: 100.0%; height: 100.0%;">ДТП совершено 30.01.2020 в 09:45(утро)<br/>Место: просп. Ленина/45.0<br/>Столкновение<br/>пострадало 1 погибло 1 раненых нет<br/> Нарушения: Несоблюдение очередности проезда Сопутствующие нарушения: Сопутствующие нарушения не выявлены</div>`)[0];
+            popup_8f811eb984d64a138afd876df4600f2e.setContent(html_b787513b81e649778674fc41f154e683);
+        
+
+        marker_8adf51cdeaec4fcfa5682d1b5c84bdfa.bindPopup(popup_8f811eb984d64a138afd876df4600f2e)
+        ;
+
+        
+    
+    
+            var marker_185362d8476042719390088b8bb540ad = L.marker(
+                [55.344019, 86.136803],
+                {}
+            ).addTo(marker_cluster_f4c38edc02c94c01acf2dab2523c0e46);
+        
+    
+            var icon_3dc0aa6b364047fb95227d2150c63ace = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_185362d8476042719390088b8bb540ad.setIcon(icon_3dc0aa6b364047fb95227d2150c63ace);
+        
+    
+        var popup_6f8ed49975da4a0fa02ce427eafa575b = L.popup({"maxWidth": "100%"});
+
+        
+            var html_c2e4136c3c4d486985ed51889500ed2d = $(`<div id="html_c2e4136c3c4d486985ed51889500ed2d" style="width: 100.0%; height: 100.0%;">ДТП совершено 31.01.2020 в 16:25(день)<br/>Место: ул. Терешковой,/26.0<br/>Столкновение<br/>пострадало 1 погибло 1 раненых нет<br/> Нарушения: Неправильный выбор дистанции Сопутствующие нарушения: Нарушение правил перевозки детей (не использование детских сидений либо удерживающих устройств)                                 Несоблюдение требований ОСАГО        Другие нарушения ПДД водителями </div>`)[0];
+            popup_6f8ed49975da4a0fa02ce427eafa575b.setContent(html_c2e4136c3c4d486985ed51889500ed2d);
+        
+
+        marker_185362d8476042719390088b8bb540ad.bindPopup(popup_6f8ed49975da4a0fa02ce427eafa575b)
+        ;
+
+        
+    
+    
+            var marker_cluster_35f59e4070004cfa90137682b78b1daa = L.markerClusterGroup(
+                {}
+            );
+            map_c0655e08a3f44f4481a0ea097c6aed9a.addLayer(marker_cluster_35f59e4070004cfa90137682b78b1daa);
+        
+    
+            var layer_control_96fa6620f02c491ea6643da2d944a045 = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_e181ad2578ae4ab4ba91cfc8dad668f9,
+                },
+                overlays :  {
+                    "\u0420\u0435\u043a\u043e\u043c\u0435\u043d\u0434\u0430\u0446\u0438\u0438" : marker_cluster_251b3a61b0e24818b61bfacb420b20fa,
+                    "\u0418\u043d\u043e\u0439 \u0432\u0438\u0434 \u0414\u0422\u041f" : marker_cluster_5a55bf5cca6c444b8691379b4f11ec4e,
+                    "\u0418\u043d\u043e\u0439 \u0432\u0438\u0434 \u0414\u0422\u041f(\u041d\u0430\u0435\u0437\u0434 \u043d\u0430 \u043b\u0438\u0446\u043e \u043e\u0441\u0443\u0449\u0435\u0441\u0442\u0432\u043b\u044f\u044e\u0449\u0435\u0435 \u043f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0441\u0442\u0432\u043e \u0440\u0430\u0431\u043e\u0442)" : marker_cluster_5e2975d807e848aeb5cfa2182779ad2a,
+                    "\u041d\u0430\u0435\u0437\u0434 \u043d\u0430 \u0432\u0435\u043b\u043e\u0441\u0438\u043f\u0435\u0434\u0438\u0441\u0442\u0430" : marker_cluster_6f6a97d4a4ea46b5bd1434e0e49a84f8,
+                    "\u041d\u0430\u0435\u0437\u0434 \u043d\u0430 \u0432\u043d\u0435\u0437\u0430\u043f\u043d\u043e \u0432\u043e\u0437\u043d\u0438\u043a\u0448\u0435\u0435 \u043f\u0440\u0435\u043f\u044f\u0442\u0441\u0442\u0432\u0438\u0435" : marker_cluster_89c75c8e11b14653a123ee905ffcef1f,
+                    "\u041d\u0430\u0435\u0437\u0434 \u043d\u0430 \u043f\u0435\u0448\u0435\u0445\u043e\u0434\u0430" : marker_cluster_ee356e87e54d4fb0abb9da007f917d83,
+                    "\u041d\u0430\u0435\u0437\u0434 \u043d\u0430 \u043f\u0440\u0435\u043f\u044f\u0442\u0441\u0442\u0432\u0438\u0435" : marker_cluster_0b5b0af37ff844c2aae998a85782237a,
+                    "\u041d\u0430\u0435\u0437\u0434 \u043d\u0430 \u0441\u0442\u043e\u044f\u0449\u0435\u0435 \u0422\u0421" : marker_cluster_35cca29320d24423ae0acec96b7f674e,
+                    "\u041e\u043f\u0440\u043e\u043a\u0438\u0434\u044b\u0432\u0430\u043d\u0438\u0435" : marker_cluster_f11a103bf7ed425381c215059ef30e5b,
+                    "\u041f\u0430\u0434\u0435\u043d\u0438\u0435 \u043f\u0430\u0441\u0441\u0430\u0436\u0438\u0440\u0430" : marker_cluster_f3cb33f280e2452180c1bf07ac2f0ac1,
+                    "\u0421\u0442\u043e\u043b\u043a\u043d\u043e\u0432\u0435\u043d\u0438\u0435" : marker_cluster_f4c38edc02c94c01acf2dab2523c0e46,
+                    "\u0421\u044a\u0435\u0437\u0434 \u0441 \u0434\u043e\u0440\u043e\u0433\u0438" : marker_cluster_35f59e4070004cfa90137682b78b1daa,
+                },
+            };
+            L.control.layers(
+                layer_control_96fa6620f02c491ea6643da2d944a045.base_layers,
+                layer_control_96fa6620f02c491ea6643da2d944a045.overlays,
+                {"autoZIndex": true, "collapsed": true, "position": "topright"}
+            ).addTo(map_c0655e08a3f44f4481a0ea097c6aed9a);
+        
+</script>
